@@ -1,9 +1,9 @@
 
 
-npminstall:
+npminstallFrontEnd:
   cmd.run:
     - name: npm install
-    - cwd: /aws_api_lambda_local/api
+    - cwd: /aws_api_lambda_local/front_end/front_end_app
     - require:
       - pkg: nodejs
       - pkg: npm
@@ -11,7 +11,7 @@ npminstall:
       - cmd: npmConfig
       - cmd: nodeInspector
 
-startapp:
+startappFrontEnd:
   cmd.run:
     - name: screen -dmS aws_api nohup node-debug --debug-port 5959 src/server >> logfile.log
     - cwd: /aws_api_lambda_local/front_end/front_end_app

@@ -44,7 +44,7 @@ npmConfig:
 npminstall:
   cmd.run:
     - name: npm install
-    - cwd: /aws_api_lambda_local/local_aws_api
+    - cwd: /aws_api_lambda_local/api
     - require:
       - pkg: nodejs
       - pkg: npm

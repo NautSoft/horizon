@@ -15,7 +15,7 @@ var config = {
     // Hook ensures always fresh server response even for client file change.
     hook: true
   },
-  port: process.env.PORT || 8000,
+  port: process.env.PORT || 8080,
   version: require('../../package').version,
   webpackStylesExtensions: ['css', 'less', 'sass', 'scss', 'styl']
 };
