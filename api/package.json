@@ -1,0 +1,25 @@
+{
+  "name": "aws_api_gateway_mock",
+  "version": "1.0.0",
+  "description": "A very simple http server that reads aws api json and creates a rest api based on it. Used for local testing",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "jaegerpicker@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "dynamodb_test": "file:../lambda_functions/dynamodb_test",
+    "express": "^4.13.2",
+    "swagger-express-mw": "0.0.x"
+  },
+  "devDependencies": {
+    "should": "^5.2.0",
+    "supertest": "^0.15.0",
+    "z-schema": "^3.12.0",
+    "request": "^2.58.0",
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "dotenv": "^1.2.0"
+  }
+}

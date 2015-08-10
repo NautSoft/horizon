@@ -1,0 +1,29 @@
+{
+  "name": "dynamodb_test",
+  "version": "1.0.0",
+  "description": "A test Lambda function",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Horizon-Framework/horizon.git"
+  },
+  "author": "jaegerpicker@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Horizon-Framework/horizon/issues"
+  },
+  "homepage": "https://github.com/Horizon-Framework/horizon",
+  "dependencies": {
+    "aws-sdk": "^2.1.44",
+    "bluebird": "^2.9.34",
+    "dynamodb-doc": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.2.5"
+  }
+}

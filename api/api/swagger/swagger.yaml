@@ -1,0 +1,85 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Local AWS API dev App
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /hello:
+    x-swagger-router-controller: hello_world
+    get:
+      description: Says hello
+      operationId: hello
+      parameters:
+        - name: name
+          in: query
+          description: Name to say hello to
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HelloWorldResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /dynamoDBTest:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: dynamo_db_test
+    get:
+      description: Moves all messages from one queue to another
+      # used as the method name of the controller
+      operationId: db_test
+      parameters:
+        - name: insert_val
+          in: query
+          description: value to insert
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            # a pointer to a definition
+            $ref: "#/definitions/DynamoDBTestResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+# complex objects have schema definitions
+definitions:
+  HelloWorldResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  DynamoDBTestResponse:
+    required:
+      - value
+    properties:
+      value:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
