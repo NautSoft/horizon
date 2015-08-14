@@ -4,4 +4,5 @@ base:
     - javaenv
     - dynamodb
     - node
-    - node_front_end
+    #This doesn't start up correctly, needs investigation
+    #- node_front_end
