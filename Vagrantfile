@@ -8,9 +8,15 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "./", "/aws_api_lambda_local/"
 	config.vm.synced_folder "~/.aws/", "/aws_creds/"
 	config.vm.provision :salt do |salt|
-		salt.minion_config = "srv/minion"
-		salt.run_highstate = true
+	    #The latest version of salt needs this flag to enable pip installs
+	    salt.bootstrap_options = "-P"
+	    # Vagrant issue: https://github.com/mitchellh/vagrant/issues/5973 causes this copy to fail
+		#salt.minion_config = "srv/minion"
+		#salt.run_highstate = true
 	end
+	#This is a workaround to: https://github.com/mitchellh/vagrant/issues/5973
+	config.vm.provision "shell",
+        inline: "sudo cp /srv/minion /etc/salt/minion && sudo salt-call --local state.highstate"
 end
 
 Vagrant::Config.run do |config|
