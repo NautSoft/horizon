@@ -18,6 +18,26 @@ consumes:
 produces:
   - application/json
 paths:
+  /newendpoint:
+    x-swagger-router-controller: hello_world
+    get:
+      description: Says hello
+      operationId: hello
+      parameters:
+        - name: name
+          in: query
+          description: Name to say hello to
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/HelloWorldResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /hello:
     x-swagger-router-controller: hello_world
     get:
