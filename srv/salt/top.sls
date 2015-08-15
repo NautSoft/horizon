@@ -5,4 +5,4 @@ base:
     - dynamodb
     - node
     #This doesn't start up correctly, needs investigation
-    #- node_front_end
+    - node_front_end

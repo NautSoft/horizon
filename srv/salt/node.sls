@@ -28,7 +28,7 @@ aptGetInstallNewNode:
 
 nodeInspector:
   cmd.run:
-    - name: npm install node-inspector -g
+    - name: sudo npm install node-inspector -g
     - require:
       - cmd: npmConfig
 
@@ -54,7 +54,9 @@ npminstall:
 
 startapp:
   cmd.run:
-    - name: screen -dmS aws_api nohup node-debug --debug-port 5858 app.js >> logfile.log
+    # Launch with the line below to debug
+    # - name: screen -dmS aws_api nohup node-debug --debug-port 5858 app.js >> logfile.log
+    - name: screen -dmS aws_api nohup node app.js >> logfile.log
     - cwd: /aws_api_lambda_local/api
     - require:
       - pkg: screen
